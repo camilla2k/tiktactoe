@@ -169,21 +169,21 @@ def b_click(b):
         messagebox.showerror("Connect Four", "Another player already claimed that spot /n Choose another spot")
 
 def reset():
-    global b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31,b31,b33,b34,b35,b36,b37,b38,b39,b41,b42
+    global b1,b2,b3,b4,b5,b6,b7,b8,b9
     global clicked, count
     clicked= True
     count= 0
 
 #build buttons
-b1=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda:b_click(b1) )
-b2=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda: b_click(b2) )
-b3=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda: b_click(b3) )
-b4=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda: b_click(b4) )
-b5=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda: b_click(b5) )
-b6=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda: b_click(b6) )
-b7=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda: b_click(b7) )
-b8=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda: b_click(b8) ) 
-b9=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= Lambda: b_click(b9) ) 
+b1=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda:b_click(b1) )
+b2=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b2) )
+b3=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b3) )
+b4=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b4) )
+b5=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b5) )
+b6=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b6) )
+b7=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b7) )
+b8=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b8) ) 
+b9=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b9) ) 
 # grid button
 b1.grid(row=0,column=0)
 b2.grid(row=0,column=1)
@@ -204,9 +204,9 @@ my_menu=Menu(root)
 root.config(menu=my_menu)
 
 # creats options menu
-options_menu= Menu(my_menu,Tearoff=False)
+options_menu= Menu(my_menu,tearoff=False)
 my_menu.add_cascade(label="options",menu=options_menu)
-options_menu.add_command(label="Rest Game", command=reset)
+options_menu.add_command(label="RestGame", command=reset)
 
 reset()
 
