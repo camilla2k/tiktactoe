@@ -12,7 +12,6 @@ clicked=True
 count=0
 gravity = [["" for _ in range(7)] for _ in range(6)]
 
-# Optional: Explicitly loop and assign (if needed later)
 for i in range(6):
     for k in range(7):
         gravity[i][k] = ""
