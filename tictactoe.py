@@ -1,4 +1,4 @@
-from ast import lambda
+from ast import Lambda
 from tkinter import*
 from tkinter import messagebox
 
@@ -10,14 +10,184 @@ root.title('connect 4- camilla')
 # x starts so true
 clicked=True
 count=0
+gravity = [["" for _ in range(7)] for _ in range(6)]
 
-
+# Optional: Explicitly loop and assign (if needed later)
+for i in range(6):
+    for k in range(7):
+        gravity[i][k] = ""
 
 # checck to see i someone won
 def checkifwon():
     global winner
     winner=False
-  
+
+
+# check which button to go to when colom is clicked
+def lowest_button(b):
+        if b== b1 or b==b8 or b==b15 or b==b22 or b==b36:
+            if gravity[0][6]== "":
+                gravity[0][5]="occupied"
+                return "occupied"
+            elif gravity[0][5]== "":
+                gravity[0][5]="occupied"
+                return "occupied"
+            elif gravity[0][4]== "":
+                gravity[0][4]="occupied"
+                return "occupied"
+            elif gravity[0][3]== "":
+                gravity[0][3]="occupied"
+                return "occupied"
+            elif gravity[0][2]== "":
+                gravity[0][2]="occupied"
+                return "occupied"
+            elif gravity[0][1]== "":
+                gravity[0][1]="occupied"
+                return "occupied"
+            elif gravity[0][0]== "":
+                gravity[0][0]="occupied"
+                return "occupied"
+            else:
+                return "no more spots"
+
+        if b== b2 or b==b9 or b==b16 or b==b23 or b==b37:
+            if gravity[1][6]== "":
+                gravity[1][5]="occupied"
+                return "occupied"
+            elif gravity[1][5]== "":
+                gravity[1][5]="occupied"
+                return "occupied"
+            elif gravity[1][4]== "":
+                gravity[1][4]="occupied"
+                return "occupied"
+            elif gravity[1][3]== "":
+                gravity[1][3]="occupied"
+                return "occupied"
+            elif gravity[1][2]== "":
+                gravity[1][2]="occupied"
+                return "occupied"
+            elif gravity[1][1]== "":
+                gravity[1][1]="occupied"
+                return "occupied"
+            elif gravity[1][0]== "":
+                gravity[1][0]="occupied"
+                return "occupied"
+            else:
+                return "no more spots"
+        if b== b3 or b==b10 or b==b17 or b==b24 or b==b38:
+            if gravity[2][6]== "":
+                gravity[2][5]="occupied"
+                return "occupied"
+            elif gravity[2][5]== "":
+                gravity[2][5]="occupied"
+                return "occupied"
+            elif gravity[2][4]== "":
+                gravity[2][4]="occupied"
+                return "occupied"
+            elif gravity[2][3]== "":
+                gravity[2][3]="occupied"
+                return "occupied"
+            elif gravity[2][2]== "":
+                gravity[2][2]="occupied"
+                return "occupied"
+            elif gravity[2][1]== "":
+                gravity[2][1]="occupied"
+                return "occupied"
+            elif gravity[2][0]== "":
+                gravity[2][0]="occupied"
+                return "occupied"
+            else:
+                return "no more spots"
+        if b== b4 or b==b11 or b==b18 or b==b25 or b==b39:
+            if gravity[2][6]== "":
+                gravity[2][5]="occupied"
+                return "occupied"
+            elif gravity[2][5]== "":
+                gravity[2][5]="occupied"
+                return "occupied"
+            elif gravity[2][4]== "":
+                gravity[2][4]="occupied"
+                return "occupied"
+            elif gravity[2][3]== "":
+                gravity[2][3]="occupied"
+                return "occupied"
+            elif gravity[2][2]== "":
+                gravity[2][2]="occupied"
+                return "occupied"
+            elif gravity[2][1]== "":
+                gravity[2][1]="occupied"
+                return "occupied"
+            elif gravity[2][0]== "":
+                gravity[2][0]="occupied"
+                return "occupied"
+            else:
+                return "no more spots"
+        if b== b5 or b==b12 or b==b19 or b==b26 or b==b40:
+            if gravity[3][6]== "":
+                gravity[3][5]="occupied"
+                return "occupied"
+            elif gravity[3][5]== "":
+                gravity[3][5]="occupied"
+                return "occupied"
+            elif gravity[3][4]== "":
+                gravity[3][4]="occupied"
+                return "occupied"
+            elif gravity[3][3]== "":
+                gravity[3][3]="occupied"
+                return "occupied"
+            elif gravity[3][2]== "":
+                gravity[3][2]="occupied"
+                return "occupied"
+            elif gravity[3][1]== "":
+                gravity[3][1]="occupied"
+                return "occupied"
+            elif gravity[3][0]== "":
+                gravity[3][0]="occupied"
+                return "occupied"
+            else:
+                return "no more spots"
+        if b== b6 or b==b13 or b==b20 or b==b27 or b==b41:
+            if gravity[4][6]== "":
+                gravity[4][5]="occupied" 
+                return "occupied"
+            elif gravity[4][5]== "":
+                gravity[4][5]="occupied"
+                return "occupied"
+            elif gravity[4][4]== "":
+                gravity[4][4]="occupied"
+                return "occupied"
+            elif gravity[4][3]== "":
+                gravity[4][3]="occupied"
+                return "occupied"
+            elif gravity[4][2]== "":
+                gravity[4][2]="occupied"
+                return "occupied"
+            elif gravity[4][1]== "":
+                gravity[4][1]="occupied"
+                return "occupied"
+            elif gravity[4][0]== "":
+                gravity[4][0]="occupied"
+                return "occupied"
+            else:
+                return "no more spots"
+        if b== b7 or b==b14 or b==b21 or b==b28 or b==b42:
+            if gravity[5][6]== "":
+                gravity[5][5]="occupied"
+            elif gravity[5][5]== "":
+                gravity[5][5]="occupied"
+            elif gravity[5][4]== "":
+                gravity[5][4]="occupied"
+            elif gravity[5][3]== "":
+                gravity[5][3]="occupied"
+            elif gravity[5][2]== "":
+                gravity[5][2]="occupied"
+            elif gravity[5][1]== "":
+                gravity[5][1]="occupied"
+            elif gravity[5][0]== "":
+                gravity[5][0]="occupied"
+            else:
+                return "no more spots"
+
 def disable_all_buttons():
     b1.config(state=DISABLED)  
     b2.config(state=DISABLED)
@@ -66,7 +236,7 @@ def disable_all_buttons():
 def checkifwon():
     global winner
     winner = False
-
+#
     if b1["text"]=="X" and b2["text"]=="X" and b3["text"]=="X":
         b1.config(bg="red")
         b2.config(bg="red")
@@ -188,15 +358,24 @@ def b_click(b):
     global clicked, count
    
     if b["text"]==" " and clicked == True:
-        b["text"]= "X"
-        clicked= False
-        count+=1
-        checkifwon()
+        if lowest_button(b)=="occupied":
+            b["text"]="X"
+            b.config(bg="red")
+            clicked= False
+            count+=1
+            checkifwon()
+        else:
+            messagebox.showerror("Connect Four", "no more spots in this row")
+
     elif  b["text"]==" " and clicked == False:
-        b["text"]= "O"
-        clicked= True
-        count+=1
-        checkifwon()
+        if lowest_button(b)=="occupied":
+            b["text"]="O"
+            b.config(bg="blue")
+            clicked= True
+            count+=1
+            checkifwon()
+        else:
+            messagebox.showerror("Connect Four", "no more spots in this row")
     else:
         messagebox.showerror("Connect Four", "Another player already claimed that spot /n Choose another spot")
 
@@ -216,39 +395,39 @@ b6=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemB
 b7=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b7) )
 b8=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b8) ) 
 b9=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b9) ) 
-b10=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b10) )
-b11=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b11) )
-b12=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b12) )
-b13=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b13) )
-b14=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b14) )
-b15=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b15) )
-b16=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b16) )
-b17=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b17) )
-b18=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b18) )
-b19=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b19) )
-b20=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b20) )
-b21=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b21) )
-b22=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b22) )
-b23=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b23) )
-b24=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b24) )
-b25=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b25) )
-b26=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b26) )
-b27=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b27) )
-b28=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b28) )
-b29=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b29) )
-b30=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b30) )
-b31=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b31) )
-b32=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b32) )
-b33=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b33) )
-b34=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b34) )
-b35=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b35) )
-b36=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b36) )
-b37=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b37) )
-b38=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b38) )
-b39=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b39) )
-b40=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b40) )
-b41=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b41) )
-b42=Button(root, text="", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b42) )
+b10=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b10) )
+b11=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b11) )
+b12=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b12) )
+b13=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b13) )
+b14=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b14) )
+b15=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b15) )
+b16=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b16) )
+b17=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b17) )
+b18=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b18) )
+b19=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b19) )
+b20=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b20) )
+b21=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b21) )
+b22=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b22) )
+b23=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b23) )
+b24=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b24) )
+b25=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b25) )
+b26=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b26) )
+b27=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b27) )
+b28=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b28) )
+b29=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b29) )
+b30=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b30) )
+b31=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b31) )
+b32=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b32) )
+b33=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b33) )
+b34=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b34) )
+b35=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b35) )
+b36=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b36) )
+b37=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b37) )
+b38=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b38) )
+b39=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b39) )
+b40=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b40) )
+b41=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b41) )
+b42=Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command= lambda: b_click(b42) )
 
 # grid button
 b1.grid(row=0, column=0)
