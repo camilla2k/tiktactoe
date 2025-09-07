@@ -9,38 +9,53 @@ board = [["" for _ in range(COLS)] for _ in range(ROWS)]
 buttons = {}
 clicked = True  # X starts
 
-# ---------- Helper functions ----------
 def index_from_button(b):
-    """Find row, col of a clicked button"""
     for (r, c), btn in buttons.items():
         if btn == b:
             return r, c
     return None, None
 
 def get_column(col):
-    """Return the lowest empty row in this column, or None if full"""
+   
     for row in range(ROWS - 1, -1, -1):
         if board[row][col] == "":
             return row
     return None
 
-def check_winner(r, c, player):
-    """Check 4 in a row from (r, c)"""
-    def count_dir(dr, dc):
-        rr, cc, cnt = r, c, 0
-        while 0 <= rr < ROWS and 0 <= cc < COLS and board[rr][cc] == player:
-            cnt += 1
-            rr += dr
-            cc += dc
-        return cnt
+def find_winner(player):
+   
+    for r in range(ROWS):
+        for c in range(COLS):
+            if board[r][c] != player:
+                continue
 
-    for dr, dc in [(0,1),(1,0),(1,1),(1,-1)]:
-        total = count_dir(dr, dc) + count_dir(-dr, -dc) - 1
-        if total >= 4:
-            return True
+            # horizontal
+            if c + 3 < COLS and all(board[r][c + i] == player for i in range(4)):
+                return [(r, c + i) for i in range(4)]
+
+            # vertical
+            if r + 3 < ROWS and all(board[r + i][c] == player for i in range(4)):
+                return [(r + i, c) for i in range(4)]
+
+            # diagonal down-right
+            if r + 3 < ROWS and c + 3 < COLS and all(board[r + i][c + i] == player for i in range(4)):
+                return [(r + i, c + i) for i in range(4)]
+
+            # diagonal down-left
+            if r + 3 < ROWS and c - 3 >= 0 and all(board[r + i][c - i] == player for i in range(4)):
+                return [(r + i, c - i) for i in range(4)]
+
+    return None
+
+def check_winner(r, c, player):
+    win_coords = find_winner(player)
+    if win_coords:
+        # highlight winning discs
+        for (rr, cc) in win_coords:
+            buttons[(rr, cc)].config(bg="yellow", activebackground="yellow")
+        return True
     return False
 
-# ---------- Game logic ----------
 def b_click(b):
     global clicked
     _, col = index_from_button(b)
@@ -53,7 +68,10 @@ def b_click(b):
     player = "X" if clicked else "O"
     board[row][col] = player
     btn = buttons[(row, col)]
-    btn.config(text=player, bg="red" if player == "X" else "blue")
+    color = "red" if player == "X" else "blue"
+
+    # ensure color stays across platforms
+    btn.config(text=player, bg=color, activebackground=color)
 
     if check_winner(row, col, player):
         messagebox.showinfo("Connect 4", f"Player {player} wins!")
@@ -71,9 +89,9 @@ def reset():
     board = [["" for _ in range(COLS)] for _ in range(ROWS)]
     clicked = True
     for btn in buttons.values():
-        btn.config(text=" ", bg="SystemButtonFace", state=NORMAL)
+        btn.config(text=" ", bg="SystemButtonFace", activebackground="SystemButtonFace", state=NORMAL)
 
-# ---------- Build Buttons ----------
+# Build Buttons
 count = 1
 for r in range(ROWS):
     for c in range(COLS):
@@ -82,10 +100,10 @@ for r in range(ROWS):
         btn.config(command=lambda b=btn: b_click(b))
         btn.grid(row=r, column=c)
         buttons[(r, c)] = btn
-        globals()[f"b{count}"] = btn  # keep your b1..b42 naming
+        globals()[f"b{count}"] = btn  # b1-b42 naming
         count += 1
 
-# ---------- Menu ----------
+# Menu
 my_menu = Menu(root)
 root.config(menu=my_menu)
 options_menu = Menu(my_menu, tearoff=False)
